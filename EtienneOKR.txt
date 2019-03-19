@@ -1,0 +1,11 @@
+Deliverables:
+
+Initial ball throwing + player movement -- est. 2 hours
+
+Design Document -- est. 2 hours
+
+Design Sketch - est. 1.5hr
+
+Setup Initial GitHub repo -- est. 1 hr.
+
+Setup and manage Trello task board - est 2 hr
