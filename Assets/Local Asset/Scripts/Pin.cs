@@ -31,7 +31,7 @@ public class Pin : MonoBehaviour
 
         if(collision.gameObject != null && collision.gameObject.tag == "ball")
         {
-            BallLauncher.ProjectBall(collision.gameObject, 0.2f, 0.2f);
+            BallLauncher.ProjectBall(collision.gameObject, 20.2f, 20.2f);
         }
     }
 }
