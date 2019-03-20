@@ -28,5 +28,10 @@ public class Pin : MonoBehaviour
     {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
         rigidbody.isKinematic = false;
+
+        if(collision.gameObject != null && collision.gameObject.tag == "ball")
+        {
+            BallLauncher.ProjectBall(collision.gameObject, 0.2f, 0.2f);
+        }
     }
 }

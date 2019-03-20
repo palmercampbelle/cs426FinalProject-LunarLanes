@@ -21,8 +21,13 @@ public class BallLauncher : MonoBehaviour
     public void LaunchBall( float arcPower, float launchPower )
     {
         GameObject newBullet = GameObject.Instantiate(ballPrefab, transform.position, transform.rotation) as GameObject;
-        newBullet.GetComponent<Rigidbody>().velocity += Vector3.up * arcPower;
-        newBullet.GetComponent<Rigidbody>().velocity += transform.forward * launchPower;
-//         newBullet.GetComponent<Rigidbody>().AddForce( newBullet.transform.forward * launchPower );
+        ProjectBall(newBullet, arcPower, launchPower);
+    }
+
+    public static void ProjectBall(GameObject ball, float arcPower, float launchPower)
+    {
+        ball.GetComponent<Rigidbody>().velocity += Vector3.up * arcPower;
+        ball.GetComponent<Rigidbody>().velocity += ball.transform.forward * launchPower;
+        //         ball.GetComponent<Rigidbody>().AddForce( newBullet.transform.forward * launchPower );
     }
 }
