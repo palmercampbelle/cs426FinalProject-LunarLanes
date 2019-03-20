@@ -20,7 +20,13 @@ public class Pin : MonoBehaviour
 
     public bool IsStanding()
     {
-        bool bIsStanding = ( transform.up.y < standingThreshold );
+        bool bIsStanding = !( transform.up.y < standingThreshold );
         return bIsStanding;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        rigidbody.isKinematic = false;
     }
 }
