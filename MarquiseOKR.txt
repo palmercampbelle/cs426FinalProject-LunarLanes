@@ -1,0 +1,9 @@
+Deliverables:
+
+Implement Pins that can be knocked over & a way to track score : ~2 hours
+
+Implement a UI that tells the player their current score along with a way to reset the game : ~2 hours
+
+Design Sketch : ~1.5 hours
+
+Create environment hazards that change the properties of the ball : ~3 hours
