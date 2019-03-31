@@ -5,9 +5,17 @@ using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour
 {
+    // variables
+    [SerializeField] private PinGroup mPinGroup;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (mPinGroup == null)
+        {
+            mPinGroup = FindObjectOfType<PinGroup>();
+        }
+
         RestartGame();
         Debug.Log("Hello World");
     }
@@ -24,9 +32,6 @@ public class GameManagerScript : MonoBehaviour
         resetButton.interactable = bShouldEnableButton;
         
     }
-
-    // variables
-    public Pin pinPrefab;
 
     // methods
 
@@ -48,11 +53,10 @@ public class GameManagerScript : MonoBehaviour
     int GetCurrentScore()
     {
         int total = 0;
-        Pin[] pinObjects = GetPinObjects();
 
-        foreach(Pin pin in pinObjects)
+        foreach ( Pin pin in mPinGroup.GetPins() )
         {
-            if( !pin.IsStanding() )
+            if ( !pin.IsStanding() )
             {
                 ++total;
             }
@@ -63,12 +67,6 @@ public class GameManagerScript : MonoBehaviour
 
     public void Cleanup()
     {
-        GameObject[] pins = GameObject.FindGameObjectsWithTag("pinObject");
-        foreach(GameObject pin in pins )
-        {
-            Destroy(pin);
-        }
-
         GameObject[] balls = GetBalls();
         foreach(GameObject ball in balls)
         {
@@ -81,13 +79,7 @@ public class GameManagerScript : MonoBehaviour
     {
         Cleanup();
 
-        GameObject[] pinspawns = GetPinSpawns();
-        foreach( GameObject spawn in pinspawns )
-        {
-            Instantiate(pinPrefab, spawn.GetComponent<Transform>().position, Quaternion.identity);
-            MeshRenderer render = spawn.GetComponentInChildren<MeshRenderer>();
-            render.enabled = false;
-        }
+        mPinGroup.ResetPins();
     }
 
     public static Text GetScoreText()

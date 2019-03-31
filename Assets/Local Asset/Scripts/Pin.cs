@@ -4,34 +4,46 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour
 {
+    [SerializeField] private float standingThreshold = 0.6f;
+
+    private Vector3 startPosition;
+    private Quaternion startRotation;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPosition = transform.position;
+        startRotation = transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    public float standingThreshold = 0.6f;
+    public void ResetToStart()
+    {
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        rigidbody.
+        transform.position = startPosition;
+        transform.rotation = startRotation;
+    }
 
     public bool IsStanding()
     {
-        bool bIsStanding = !( transform.up.y < standingThreshold );
+        Debug.Log( "Pin y: " + transform.eulerAngles.y );
+        bool bIsStanding = transform.eulerAngles.y <= standingThreshold;
         return bIsStanding;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.isKinematic = false;
-
-        if(collision.gameObject != null && collision.gameObject.tag == "ball")
-        {
-            BallLauncher.ProjectBall(collision.gameObject, 20.2f, 20.2f);
-        }
+//         Rigidbody rigidbody = GetComponent<Rigidbody>();
+//         rigidbody.isKinematic = false;
+// 
+//         if(collision.gameObject != null && collision.gameObject.tag == "ball")
+//         {
+//             BallLauncher.ProjectBall(collision.gameObject, 20.2f, 20.2f);
+//         }
     }
 }

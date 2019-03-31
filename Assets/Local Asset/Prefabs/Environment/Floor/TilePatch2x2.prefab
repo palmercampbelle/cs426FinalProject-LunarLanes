@@ -1,0 +1,766 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6195703728198909291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4131121695646653140}
+  m_Layer: 0
+  m_Name: TilePatch2x2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4131121695646653140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6195703728198909291}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5380725897774484467}
+  - {fileID: 127539288687059560}
+  - {fileID: 6444297336722631829}
+  - {fileID: 5145800451346701747}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &70780495019637478
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4131121695646653140}
+    m_Modifications:
+    - target: {fileID: 6210996997142542504, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333071186902925227, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435665694113313516, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756769083845085271, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080818352658290417, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132472911626275098, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145904336698656114, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277601610944804221, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442730353234991751, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69, type: 3}
+--- !u!4 &5145800451346701747 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+    type: 3}
+  m_PrefabInstance: {fileID: 70780495019637478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &954435402644368550
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4131121695646653140}
+    m_Modifications:
+    - target: {fileID: 6210996997142542504, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333071186902925227, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435665694113313516, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756769083845085271, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080818352658290417, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132472911626275098, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145904336698656114, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277601610944804221, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442730353234991751, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69, type: 3}
+--- !u!4 &5380725897774484467 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+    type: 3}
+  m_PrefabInstance: {fileID: 954435402644368550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2232736531739724736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4131121695646653140}
+    m_Modifications:
+    - target: {fileID: 6210996997142542504, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333071186902925227, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435665694113313516, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756769083845085271, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080818352658290417, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132472911626275098, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145904336698656114, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277601610944804221, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442730353234991751, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69, type: 3}
+--- !u!4 &6444297336722631829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+    type: 3}
+  m_PrefabInstance: {fileID: 2232736531739724736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5068770652935308605
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4131121695646653140}
+    m_Modifications:
+    - target: {fileID: 6210996997142542504, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333071186902925227, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318677089484372258, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435665694113313516, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756769083845085271, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053324053828690577, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080818352658290417, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132472911626275098, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508141695432777554, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145904336698656114, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277601610944804221, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[0].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[1].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[2].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[3].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 927602221681227445, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Faces.Array.data[4].m_TextureGroup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442730353234991751, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69, type: 3}
+--- !u!4 &127539288687059560 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5157457490026915669, guid: 8f3ea9f6089be1a4b823f1c6b7fc4f69,
+    type: 3}
+  m_PrefabInstance: {fileID: 5068770652935308605}
+  m_PrefabAsset: {fileID: 0}
