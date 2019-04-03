@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
         {
             m_anim.SetTrigger( "ThrowBall" );
             Invoke( "LaunchBall", THROW_DELAY );
+            audioManager.PlayAudioClip("throw ball", transform.position);
         }
     }
 
