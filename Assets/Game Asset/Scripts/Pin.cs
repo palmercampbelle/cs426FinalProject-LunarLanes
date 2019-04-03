@@ -39,7 +39,7 @@ public class Pin : MonoBehaviour
 
     public bool IsStanding()
     {
-        //Debug.Log( "Pin y: " + transform.eulerAngles.y );
+        Debug.Log( "Pin y: " + transform.eulerAngles.y );
         bool bIsStanding = transform.eulerAngles.y <= standingThreshold;
         if(!bIsStanding && !bHasFallen)
         {
