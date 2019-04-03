@@ -17,4 +17,9 @@ public class AIPath : MonoBehaviour
     {
         
     }
+
+    public AIPathNode GetHeadNode()
+    {
+        return m_HeadNode;
+    }
 }
