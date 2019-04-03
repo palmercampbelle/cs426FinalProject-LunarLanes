@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private bool bHasBall = true;
     private Vector3 startPosition;
     private Quaternion startRotation;
+    private AudioManager audioManager; 
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         m_anim = gameObject.GetComponentInChildren<Animator>();
         startPosition = transform.position;
         startRotation = transform.rotation;
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void LaunchBall()
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
         {
             m_anim.SetTrigger( "ThrowBall" );
             Invoke( "LaunchBall", THROW_DELAY );
+            audioManager.PlayAudioClip("throw ball", transform.position);
         }
     }
 
@@ -76,6 +79,8 @@ public class Player : MonoBehaviour
         if ( Input.GetKey( KeyCode.W ) )
         {
             m_anim.SetBool( "IsRunning", true );
+            audioManager.PlayAudioClip("footstep", transform.position);
+            
         }
         else
         {
