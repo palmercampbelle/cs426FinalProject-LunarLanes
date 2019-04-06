@@ -16,7 +16,6 @@ public class GameManagerScript : MonoBehaviour
             m_PinGroup = FindObjectOfType<PinGroup>();
         }
 
-        RestartGame();
         Debug.Log("Hello World");
     }
 
