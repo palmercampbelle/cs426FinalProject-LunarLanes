@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Game Asset/Scenes/LunarLane.unity
+    guid: 7eb4a354e02fbd041b38871b5d8a347e
   m_configObjects: {}
