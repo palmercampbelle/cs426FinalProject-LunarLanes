@@ -9,13 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4582801451784412643}
+  - component: {fileID: 6439165864952605082}
   - component: {fileID: 9174896979954302326}
   - component: {fileID: 4042571326412371414}
   - component: {fileID: 1156995850363479970}
   - component: {fileID: 7187573895865876036}
   m_Layer: 0
   m_Name: floor wedge
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +35,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6439165864952605082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009934794466183181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80638a19ca7657e44a6ab3968595a4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &9174896979954302326
 MeshFilter:
   m_ObjectHideFlags: 0
