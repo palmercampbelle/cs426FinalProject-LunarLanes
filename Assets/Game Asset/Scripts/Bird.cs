@@ -58,6 +58,8 @@ public class Bird : MonoBehaviour
         dieTriggerHash = Animator.StringToHash("die");
         anim = GetComponent<Animator>();
         anim.SetFloat("IdleAgitated", 0.5f);
+
+        anim.SetBool( flyingBoolHash, true );
         //anim.SetInteger(hopIntHash, -2);
     }
 
