@@ -7,6 +7,7 @@ public class GameManagerScript : MonoBehaviour
 {
     // variables
     [SerializeField] private PinGroup m_PinGroup;
+    [SerializeField] private SimpleHealthBar m_LaunchPowerBar;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,8 @@ public class GameManagerScript : MonoBehaviour
         {
             m_PinGroup = FindObjectOfType<PinGroup>();
         }
+
+        m_LaunchPowerBar.UpdateBar( 0, 1 );
 
         Debug.Log("Hello World");
     }
@@ -93,5 +96,10 @@ public class GameManagerScript : MonoBehaviour
         GameObject gameButton = GameObject.FindGameObjectWithTag("playerResetButton");
         Button resetButton = gameButton.GetComponent<Button>();
         return resetButton;
+    }
+
+    public SimpleHealthBar GetLaunchPowerBar()
+    {
+        return m_LaunchPowerBar;
     }
 }
