@@ -22,6 +22,21 @@ public class Pin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if ( !bHasFallen && !IsStanding() )
+        {
+            FallDownChores();
+        }
+    }
+
+    private void FallDownChores()
+    {
+        GameManagerScript gameManager = GameManagerScript.GetGameManager();
+        Scorekeeper scorekeeper = gameManager.GetScorekeeper();
+
+        scorekeeper.AddPoints( 1 );
+
+        bHasFallen = true;
+        audioManager.PlayAudioClip( "pin fall", transform.position );
     }
 
     public void ResetToStart()
@@ -41,11 +56,6 @@ public class Pin : MonoBehaviour
     {
         //Debug.Log( "Pin y: " + transform.eulerAngles.y );
         bool bIsStanding = transform.eulerAngles.y <= standingThreshold;
-        if(!bIsStanding && !bHasFallen)
-        {
-            bHasFallen = true;
-            audioManager.PlayAudioClip("pin fall", transform.position);
-        }
         return bIsStanding;
     }
 

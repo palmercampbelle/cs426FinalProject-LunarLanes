@@ -15,20 +15,21 @@ public class Player : MonoBehaviour
     [SerializeField] private float turnSpeed = 400.0f;
     [SerializeField] private float aimSpeed = 200.0f;
     [SerializeField] private float gravity = 20.0f;
-    [SerializeField] private const float THROW_DELAY = 0.5f;
-    [SerializeField] private const float RETURN_DELAY = 3.0f;
+    [SerializeField] private float THROW_DELAY = 0.5f;
+    [SerializeField] private float RETURN_DELAY = 3.0f;
 
     private Vector3 moveDirection = Vector3.zero;
-    private bool bHasBall = true;
+    private bool bBallReady = true;
     private bool bCanMove = true;
     private Vector3 startPosition;
     private Quaternion startRotation;
     private AudioManager audioManager;
     private GameManagerScript gameManager;
 
-    private float launchPower = 0.0f;
-    private float launchPowerAdjustSpeed = 0.5f;    // change in power per second
-    private const float MAX_LAUNCH_POWER = 1.0f;
+    private int throwBallTriggerHash;
+    private int isRunningBoolHash;
+    private int isStrafingBoolHash;
+    private int runBackwardsBoolHash;
 
     void Start()
     {
@@ -39,32 +40,44 @@ public class Player : MonoBehaviour
         startRotation = transform.rotation;
         audioManager = FindObjectOfType<AudioManager>();
         gameManager = FindObjectOfType<GameManagerScript>();
+
+        throwBallTriggerHash = Animator.StringToHash( "ThrowBall" );
+        isRunningBoolHash    = Animator.StringToHash( "IsRunning" );
+        isStrafingBoolHash   = Animator.StringToHash( "IsStrafing" );
+        runBackwardsBoolHash = Animator.StringToHash( "RunBackwards" );
     }
 
     private void LaunchBall()
     {
-        m_launcher.LaunchBall( (maxBallSpeed - minBallSpeed) * launchPower + minBallSpeed );
-        ResetLaunchPower();
-        bHasBall = false;
+        MovingPowerBar launchPowerBar = gameManager.GetLaunchPowerBar();
+
+        m_launcher.LaunchBall( (maxBallSpeed - minBallSpeed) * launchPowerBar.GetPower() + minBallSpeed );
+        launchPowerBar.ResetPower();
+        gameManager.GetBallTracker().LoseBall();
         bCanMove = true;
-        m_anim.SetBool( "HasBall", bHasBall );
         Invoke( "ReturnBall", RETURN_DELAY );
     }
 
     private void ThrowBall()
     {
-        if ( bHasBall )
+        if ( HasBall() )
         {
-            m_anim.SetTrigger( "ThrowBall" );
+            gameManager.GetLaunchPowerBar().SetMoving( false );
+            bBallReady = false;
+            m_anim.SetTrigger( throwBallTriggerHash );
             Invoke( "LaunchBall", THROW_DELAY );
             audioManager.PlayAudioClip("throw ball", transform.position);
         }
     }
 
+    private bool HasBall()
+    {
+        return bBallReady && !gameManager.GetBallTracker().IsEmpty();
+    }
+
     public void ReturnBall()
     {
-        bHasBall = true;
-        m_anim.SetBool( "HasBall", bHasBall );
+        bBallReady = true;
     }
 
     public void ResetToStart()
@@ -74,38 +87,16 @@ public class Player : MonoBehaviour
         m_launcher.ResetToStart();
     }
 
-    void UpdateLaunchPower()
-    {
-        SimpleHealthBar launchPowerBar = gameManager.GetLaunchPowerBar();
-
-        launchPower += launchPowerAdjustSpeed * Time.deltaTime;
-        launchPower = Mathf.Clamp( launchPower, 0.0f, MAX_LAUNCH_POWER );
-        if ( launchPower == 0 || launchPower == MAX_LAUNCH_POWER )
-        {
-            launchPowerAdjustSpeed = -launchPowerAdjustSpeed;
-        }
-        launchPowerBar.UpdateBar( launchPower, MAX_LAUNCH_POWER );
-    }
-
-    void ResetLaunchPower()
-    {
-        SimpleHealthBar launchPowerBar = gameManager.GetLaunchPowerBar();
-
-        if ( launchPowerAdjustSpeed < 0 )
-        {
-            launchPowerAdjustSpeed = -launchPowerAdjustSpeed;
-        }
-        launchPower = 0.0f;
-        launchPowerBar.UpdateBar( launchPower, MAX_LAUNCH_POWER );
-    }
-
     void Update()
     {
         // adjust power of throw by holding down button
         if ( Input.GetButton( "Throw" ) )
         {
             bCanMove = false;
-            UpdateLaunchPower();
+            if ( HasBall() )
+            {
+                gameManager.GetLaunchPowerBar().SetMoving( true );
+            }
         }
 
         // throw ball
@@ -113,7 +104,8 @@ public class Player : MonoBehaviour
         {
             ThrowBall();
         }
-        m_launcher.SetHidden( !bHasBall );
+
+        m_launcher.SetHidden( !HasBall() );
 
         // turn
         float turn = Input.GetAxis( "Turn" );
@@ -128,9 +120,9 @@ public class Player : MonoBehaviour
         {
             float walkInput = Input.GetAxis( "Walk" );
             float strafeInput = Input.GetAxis( "Strafe" );
-            m_anim.SetBool( "RunBackwards", walkInput < 0 );
-            m_anim.SetBool( "IsRunning", walkInput != 0 );
-            m_anim.SetBool( "IsStrafing", strafeInput != 0 );
+            m_anim.SetBool( runBackwardsBoolHash, walkInput < 0 );
+            m_anim.SetBool( isRunningBoolHash, walkInput != 0 );
+            m_anim.SetBool( isStrafingBoolHash, strafeInput != 0 );
 
             if ( m_controller.isGrounded )
             {
@@ -147,9 +139,9 @@ public class Player : MonoBehaviour
         }
         else
         {
-            m_anim.SetBool( "RunBackwards", false );
-            m_anim.SetBool( "IsRunning", false );
-            m_anim.SetBool( "IsStrafing", false );
+            m_anim.SetBool( runBackwardsBoolHash, false );
+            m_anim.SetBool( isRunningBoolHash, false );
+            m_anim.SetBool( isStrafingBoolHash, false );
         }
 
         // fall
