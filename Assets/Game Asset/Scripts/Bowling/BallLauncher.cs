@@ -34,6 +34,8 @@ public class BallLauncher : MonoBehaviour
         ProjectBall( newBall, launchPower );
 
         ball = newBall;
+
+        GameManagerScript.GetGameManager().SetActiveBall( ball.GetComponent<BowlingBall>() );
     }
 
     public static void ProjectBall( GameObject ball, float launchPower )
@@ -61,6 +63,7 @@ public class BallLauncher : MonoBehaviour
 
     public void ResetToStart()
     {
+        Destroy( ball );
 //         transform.localRotation = Quaternion.identity;
     }
 }

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour
 {
-    [SerializeField] private float standingThreshold = 0.6f;
+    private const float STANDING_THRESHOLD = 30.0f;
 
     private Vector3 startPosition;
     private Quaternion startRotation;
     private AudioManager audioManager;
     private bool bHasFallen = false;
+
+    public bool HasFallen() { return bHasFallen; }
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +44,7 @@ public class Pin : MonoBehaviour
     public void ResetToStart()
     {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-        if ( rigidbody.velocity.magnitude < .01 )
+//         if ( rigidbody.velocity.magnitude < .01 )
         {
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
@@ -55,7 +57,7 @@ public class Pin : MonoBehaviour
     public bool IsStanding()
     {
         //Debug.Log( "Pin y: " + transform.eulerAngles.y );
-        bool bIsStanding = transform.eulerAngles.y <= standingThreshold;
+        bool bIsStanding = transform.eulerAngles.y <= STANDING_THRESHOLD;
         return bIsStanding;
     }
 

@@ -14,6 +14,19 @@ public class PinGroup : MonoBehaviour
     {
     }
 
+    public int CountStandingPins()
+    {
+        int count = 0;
+        foreach ( Pin pin in GetPins() )
+        {
+            if ( !pin.HasFallen() )
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public Pin[] GetPins()
     {
         return GetComponentsInChildren<Pin>();

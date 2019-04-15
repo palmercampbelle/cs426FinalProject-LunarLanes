@@ -16,10 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float aimSpeed = 200.0f;
     [SerializeField] private float gravity = 20.0f;
     [SerializeField] private float THROW_DELAY = 0.5f;
-    [SerializeField] private float RETURN_DELAY = 3.0f;
 
     private Vector3 moveDirection = Vector3.zero;
-    private bool bBallReady = true;
     private bool bCanMove = true;
     private Vector3 startPosition;
     private Quaternion startRotation;
@@ -55,7 +53,6 @@ public class Player : MonoBehaviour
         launchPowerBar.ResetPower();
         gameManager.GetBallTracker().LoseBall();
         bCanMove = true;
-        Invoke( "ReturnBall", RETURN_DELAY );
     }
 
     private void ThrowBall()
@@ -63,21 +60,19 @@ public class Player : MonoBehaviour
         if ( HasBall() )
         {
             gameManager.GetLaunchPowerBar().SetMoving( false );
-            bBallReady = false;
             m_anim.SetTrigger( throwBallTriggerHash );
             Invoke( "LaunchBall", THROW_DELAY );
             audioManager.PlayAudioClip("throw ball", transform.position);
+        }
+        else
+        {
+            Destroy( gameManager.GetActiveBallObj() );
         }
     }
 
     private bool HasBall()
     {
-        return bBallReady && !gameManager.GetBallTracker().IsEmpty();
-    }
-
-    public void ReturnBall()
-    {
-        bBallReady = true;
+        return gameManager.GetActiveBallObj() == null && !gameManager.GetBallTracker().IsEmpty();
     }
 
     public void ResetToStart()
