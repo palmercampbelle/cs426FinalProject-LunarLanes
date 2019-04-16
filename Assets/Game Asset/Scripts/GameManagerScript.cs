@@ -24,7 +24,8 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         StartNewRound();
-        Debug.Log("Hello World");
+        //Debug.Log("Hello World");
+        //m_ResetButton.GetComponent<GameObject>().SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,6 +35,8 @@ public class GameManagerScript : MonoBehaviour
         {
             Invoke( "ResetPinsAfterSpare", 1 );
         }
+
+        m_ResetButton.gameObject.SetActive(false);
 
     }
 
