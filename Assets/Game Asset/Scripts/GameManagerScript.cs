@@ -15,17 +15,17 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private PinGroup m_PinGroup;
     [SerializeField] private MovingPowerBar m_LaunchPowerBar;
     [SerializeField] private BallTracker m_BallTracker;
-    [SerializeField] private Button m_ResetButton;
     [SerializeField] private Scorekeeper m_Scorekeeper;
+    [SerializeField] private Player m_Player;
+    [SerializeField] private Pause m_Pause;
 
     private BowlingBall m_ActiveBall;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartNewRound();
+        Invoke( "StartNewRound", 1 );
         //Debug.Log("Hello World");
-        //m_ResetButton.GetComponent<GameObject>().SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,9 +35,6 @@ public class GameManagerScript : MonoBehaviour
         {
             Invoke( "ResetPinsAfterSpare", 1 );
         }
-
-        m_ResetButton.gameObject.SetActive(false);
-
     }
 
     // methods
@@ -69,18 +66,27 @@ public class GameManagerScript : MonoBehaviour
         StartNewRound();
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public void EndMatch()
     {
-        // TODO - display score, ask for continue
-        RestartGame();
+        m_Pause.GameOverMenu();
     }
 
     public void StartNewRound()
     {
-        // TODO - display brief message for new round before progressing
         m_PinGroup.ResetPins();
         m_BallTracker.ResetToStart();
         Cleanup();
+
+        NewRoundMessage newRoundMessage = FindObjectOfType<NewRoundMessage>();
+        if ( newRoundMessage != null )
+        {
+            newRoundMessage.ShowNewRound( m_Scorekeeper.GetRoundNum() );
+        }
     }
 
     public static void SendEvent( GameEvent eventType )
@@ -116,11 +122,11 @@ public class GameManagerScript : MonoBehaviour
         return m_ActiveBall.gameObject;
     }
 
-    public Button GetResetButton() { return m_ResetButton; }
     public MovingPowerBar GetLaunchPowerBar() { return m_LaunchPowerBar; }
     public BallTracker GetBallTracker() { return m_BallTracker; }
     public Scorekeeper GetScorekeeper() { return m_Scorekeeper; }
     public PinGroup GetPinGroup() { return m_PinGroup; }
 
     public static GameManagerScript GetGameManager() { return FindObjectOfType<GameManagerScript>(); }
+    public static Player GetPlayerScript() { return GetGameManager().m_Player; }
 }

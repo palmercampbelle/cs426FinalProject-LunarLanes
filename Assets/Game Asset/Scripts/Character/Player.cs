@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            bCanMove = true;
             Destroy( gameManager.GetActiveBallObj() );
         }
     }
@@ -92,9 +93,9 @@ public class Player : MonoBehaviour
         // adjust power of throw by holding down button
         if ( Input.GetButton( "Throw" ) )
         {
-            bCanMove = false;
             if ( HasBall() )
             {
+                bCanMove = false;
                 gameManager.GetLaunchPowerBar().SetMoving( true );
                 //audioManager.PlayAudioClip("charge", transform.position);
                 //Debug.Log(transform.position.x + ", " + transform.position.y + ", " + transform.position.z);

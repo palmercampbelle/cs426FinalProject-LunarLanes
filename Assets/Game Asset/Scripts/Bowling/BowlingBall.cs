@@ -17,10 +17,10 @@ public class BowlingBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( IsBallDead() )
-        {
-            Destroy( gameObject );
-        }
+//         if ( IsBallDead() )
+//         {
+//             Destroy( gameObject );
+//         }
     }
 
     public bool IsBallDead()
