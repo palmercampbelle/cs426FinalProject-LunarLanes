@@ -10,6 +10,7 @@ public class Scorekeeper : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text m_TotalScoreText;
     [SerializeField] private TMPro.TMP_Text m_RoundScoreText;
     [SerializeField] private TMPro.TMP_Text m_RoundNumText;
+    [SerializeField] private TMPro.TMP_Text m_EndingScoreText;
 
     private int m_TotalScore = 0;
     private int m_RoundScore = 0;
@@ -33,6 +34,7 @@ public class Scorekeeper : MonoBehaviour
     void Update()
     {
         m_TotalScoreText.SetText( m_TotalScore.ToString() );
+        m_EndingScoreText.SetText( m_TotalScore.ToString() );
         m_RoundScoreText.SetText( m_RoundScore.ToString() );
         m_RoundNumText.SetText( m_CurrentRound.ToString() );
 
@@ -44,8 +46,8 @@ public class Scorekeeper : MonoBehaviour
             }
             else
             {
-                GameManagerScript.SendEvent( GameEvent.RoundOver );
                 StartNewRound();
+                GameManagerScript.SendEvent( GameEvent.RoundOver );
             }
         }
     }
