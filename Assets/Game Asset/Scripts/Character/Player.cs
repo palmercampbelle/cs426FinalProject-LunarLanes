@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float aimSpeed = 200.0f;
     [SerializeField] private float gravity = 20.0f;
     [SerializeField] private float THROW_DELAY = 0.5f;
-    [SerializeField] private int SOUND_DELAY = 2;
 
     private Vector3 moveDirection = Vector3.zero;
     private bool bCanMove = true;
@@ -29,7 +28,6 @@ public class Player : MonoBehaviour
     private int isRunningBoolHash;
     private int isStrafingBoolHash;
     private int runBackwardsBoolHash;
-    private int currentTick;
 
     void Start()
     {
@@ -45,8 +43,6 @@ public class Player : MonoBehaviour
         isRunningBoolHash    = Animator.StringToHash( "IsRunning" );
         isStrafingBoolHash   = Animator.StringToHash( "IsStrafing" );
         runBackwardsBoolHash = Animator.StringToHash( "RunBackwards" );
-
-        currentTick = 0;
     }
 
     private void LaunchBall()
@@ -67,7 +63,6 @@ public class Player : MonoBehaviour
             m_anim.SetTrigger( throwBallTriggerHash );
             Invoke( "LaunchBall", THROW_DELAY );
             audioManager.PlayAudioClip("throw ball", transform.position);
-            //audioManager.StopAudioClip("charge");
         }
         else
         {
@@ -96,8 +91,6 @@ public class Player : MonoBehaviour
             if ( HasBall() )
             {
                 gameManager.GetLaunchPowerBar().SetMoving( true );
-                //audioManager.PlayAudioClip("charge", transform.position);
-                //Debug.Log(transform.position.x + ", " + transform.position.y + ", " + transform.position.z);
             }
         }
 
@@ -132,10 +125,9 @@ public class Player : MonoBehaviour
                 moveDirection += transform.right * strafeInput * moveSpeed;
             }
 
-            if ( walkInput != 0 &&  ( ( ++currentTick ) % SOUND_DELAY == 0) )
+            if ( walkInput != 0 )
             {
-                Vector3 offset = new Vector3(10.0f, 10.0f, 10.0f);
-                audioManager.PlayAudioClip("footstep", transform.position + offset);
+//             audioManager.PlayAudioClip("footstep", transform.position);
             }
 
             m_controller.Move( moveDirection * Time.deltaTime );

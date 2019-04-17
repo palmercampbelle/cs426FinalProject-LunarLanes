@@ -35,15 +35,4 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
-
-    public void StopAudioClip(string clipName)
-    {
-        foreach (AudioSource audio in audioSources)
-        {
-            if (audio.clip.name == clipName)
-            {
-                audio.Stop();
-            }
-        }
-    }
 }
