@@ -38,7 +38,7 @@ public class Pin : MonoBehaviour
         scorekeeper.AddPoints( 1 );
 
         bHasFallen = true;
-        audioManager.PlayAudioClip( "pin fall", transform.position );
+        audioManager.PlayAudioClip( "pin fall", new Vector3(-16.8f, -0.01f, -20.8f) );
     }
 
     public void ResetToStart()
