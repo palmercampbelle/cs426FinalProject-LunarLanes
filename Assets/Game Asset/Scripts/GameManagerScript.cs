@@ -18,13 +18,17 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private Scorekeeper m_Scorekeeper;
     [SerializeField] private Player m_Player;
     [SerializeField] private Pause m_Pause;
+    [SerializeField] private CanvasGroup m_TitleScreen;
+    [SerializeField] private HUDManager m_HUD;
 
     private BowlingBall m_ActiveBall;
 
     // Start is called before the first frame update
     void Start()
     {
-        Invoke( "StartNewRound", 1 );
+        m_TitleScreen.gameObject.SetActive( true );
+        m_HUD.SetHidden( true );
+        SetPause( true );
         //Debug.Log("Hello World");
     }
 
@@ -39,6 +43,14 @@ public class GameManagerScript : MonoBehaviour
 
     // methods
 
+    public void StartGame()
+    {
+        m_TitleScreen.gameObject.SetActive( false );
+        m_HUD.SetHidden( false );
+        SetPause( false );
+        RestartGame();
+    }
+
     public static GameObject[] GetBalls()
     {
         return GameObject.FindGameObjectsWithTag("ball");
@@ -52,6 +64,18 @@ public class GameManagerScript : MonoBehaviour
             Destroy(ball);
         }
 
+    }
+
+    public void SetPause(bool bPause = true)
+    {
+        if (bPause)
+        {
+            m_Pause.PauseGame();
+        }
+        else
+        {
+            m_Pause.ContinueGame();
+        }
     }
 
     private void ResetPinsAfterSpare()

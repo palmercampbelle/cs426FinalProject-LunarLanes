@@ -36,7 +36,7 @@ public class Scorekeeper : MonoBehaviour
         m_TotalScoreText.SetText( m_TotalScore.ToString() );
         m_EndingScoreText.SetText( m_TotalScore.ToString() );
         m_RoundScoreText.SetText( m_RoundScore.ToString() );
-        m_RoundNumText.SetText( m_CurrentRound.ToString() );
+        m_RoundNumText.SetText( m_CurrentRound.ToString() + "/" + MAX_ROUNDS.ToString() );
 
         if ( IsRoundOver() )
         {
