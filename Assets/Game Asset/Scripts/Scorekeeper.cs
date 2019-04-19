@@ -40,6 +40,7 @@ public class Scorekeeper : MonoBehaviour
 
         if ( IsRoundOver() )
         {
+            EndOfRoundChores();
             if ( IsMatchOver() )
             {
                 GameManagerScript.SendEvent( GameEvent.MatchOver );
@@ -50,6 +51,13 @@ public class Scorekeeper : MonoBehaviour
                 GameManagerScript.SendEvent( GameEvent.RoundOver );
             }
         }
+    }
+
+    private void EndOfRoundChores()
+    {
+        m_TotalScore += m_RoundScore;
+        m_RoundScore = 0;
+        m_ScoreMultiplier = 1;
     }
 
     public bool IsRoundOver()
@@ -71,10 +79,6 @@ public class Scorekeeper : MonoBehaviour
     public void StartNewRound()
     {
         m_CurrentRound++;
-
-        m_TotalScore += m_RoundScore;
-        m_RoundScore = 0;
-        m_ScoreMultiplier = 1;
     }
 
     public void AddPoints( int points )
