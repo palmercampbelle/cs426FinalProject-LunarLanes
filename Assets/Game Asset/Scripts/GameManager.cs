@@ -9,8 +9,10 @@ public enum GameEvent
     MatchOver,
 }
 
-public class GameManagerScript : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    public static GameManager GM;
+
     // variables
     [SerializeField] private PinGroup m_PinGroup;
     [SerializeField] private MovingPowerBar m_LaunchPowerBar;
@@ -22,6 +24,28 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private HUDManager m_HUD;
 
     private BowlingBall m_ActiveBall;
+
+    // accessors
+    public MovingPowerBar GetLaunchPowerBar() { return m_LaunchPowerBar; }
+    public BallTracker GetBallTracker() { return m_BallTracker; }
+    public Scorekeeper GetScorekeeper() { return m_Scorekeeper; }
+    public PinGroup GetPinGroup() { return m_PinGroup; }
+    public Player GetPlayerScript() { return m_Player; }
+
+    // Awake is called after all objects are initialized, but before Start
+    private void Awake()
+    {
+        //Singleton pattern
+        if ( GM == null )
+        {
+            DontDestroyOnLoad( gameObject );
+            GM = this;
+        }
+        else if ( GM != this )
+        {
+            Destroy( gameObject );
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -115,15 +139,14 @@ public class GameManagerScript : MonoBehaviour
 
     public static void SendEvent( GameEvent eventType )
     {
-        GameManagerScript gameManager = GetGameManager();
         switch ( eventType )
         {
         case GameEvent.RoundOver:
-            gameManager.StartNewRound();
+            GM.StartNewRound();
             break;
 
         case GameEvent.MatchOver:
-            gameManager.EndMatch();
+            GM.EndMatch();
             break;
 
         default:
@@ -145,12 +168,4 @@ public class GameManagerScript : MonoBehaviour
 
         return m_ActiveBall.gameObject;
     }
-
-    public MovingPowerBar GetLaunchPowerBar() { return m_LaunchPowerBar; }
-    public BallTracker GetBallTracker() { return m_BallTracker; }
-    public Scorekeeper GetScorekeeper() { return m_Scorekeeper; }
-    public PinGroup GetPinGroup() { return m_PinGroup; }
-
-    public static GameManagerScript GetGameManager() { return FindObjectOfType<GameManagerScript>(); }
-    public static Player GetPlayerScript() { return GetGameManager().m_Player; }
 }

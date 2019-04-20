@@ -5,18 +5,30 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager AM;
 
-    private GameManagerScript gameManager;
     private AudioSource[] audioSources;
+
+    private void Awake()
+    {
+        //Singleton pattern
+        if ( AM == null )
+        {
+            DontDestroyOnLoad( gameObject );
+            AM = this;
+        }
+        else if ( AM != this )
+        {
+            Destroy( gameObject );
+        }
+
+        audioSources = GetComponents<AudioSource>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        if (!gameManager)
-        {
-            gameManager = FindObjectOfType<GameManagerScript>();
-        }
-        
-        audioSources = GetComponents<AudioSource>();
+
     }
 
     // Update is called once per frame

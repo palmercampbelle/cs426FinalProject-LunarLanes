@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class BowlingBall : MonoBehaviour
 {
-    private AudioManager audioManager;
-
     private const float DEAD_BALL_THRESHOLD = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -36,6 +33,6 @@ public class BowlingBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        audioManager.PlayAudioClip("ball bounce", transform.position);
+        AudioManager.AM.PlayAudioClip("ball bounce", transform.position);
     }
 }

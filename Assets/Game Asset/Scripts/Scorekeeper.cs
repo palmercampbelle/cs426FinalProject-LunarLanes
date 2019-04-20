@@ -43,12 +43,12 @@ public class Scorekeeper : MonoBehaviour
             EndOfRoundChores();
             if ( IsMatchOver() )
             {
-                GameManagerScript.SendEvent( GameEvent.MatchOver );
+                GameManager.SendEvent( GameEvent.MatchOver );
             }
             else
             {
                 StartNewRound();
-                GameManagerScript.SendEvent( GameEvent.RoundOver );
+                GameManager.SendEvent( GameEvent.RoundOver );
             }
         }
     }
@@ -62,8 +62,8 @@ public class Scorekeeper : MonoBehaviour
 
     public bool IsRoundOver()
     {
-        BallTracker ballTracker = GameManagerScript.GetGameManager().GetBallTracker();
-        if ( ballTracker.IsEmpty() && GameManagerScript.GetBalls().Length == 0 )
+        BallTracker ballTracker = GameManager.GM.GetBallTracker();
+        if ( ballTracker.IsEmpty() && GameManager.GetBalls().Length == 0 )
         {
             return true;
         }

@@ -8,17 +8,19 @@ public class Pin : MonoBehaviour
 
     private Vector3 startPosition;
     private Quaternion startRotation;
-    private AudioManager audioManager;
     private bool bHasFallen = false;
 
     public bool HasFallen() { return bHasFallen; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         startPosition = transform.position;
         startRotation = transform.rotation;
-        audioManager = FindObjectOfType<AudioManager>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
     }
 
     // Update is called once per frame
@@ -32,13 +34,12 @@ public class Pin : MonoBehaviour
 
     private void FallDownChores()
     {
-        GameManagerScript gameManager = GameManagerScript.GetGameManager();
-        Scorekeeper scorekeeper = gameManager.GetScorekeeper();
+        Scorekeeper scorekeeper = GameManager.GM.GetScorekeeper();
 
         scorekeeper.AddPoints( 1 );
 
         bHasFallen = true;
-        audioManager.PlayAudioClip( "pin fall", new Vector3(-16.8f, -0.01f, -20.8f) );
+        AudioManager.AM.PlayAudioClip( "pin fall", new Vector3(-16.8f, -0.01f, -20.8f) );
     }
 
     public void ResetToStart()

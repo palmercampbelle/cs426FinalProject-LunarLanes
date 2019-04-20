@@ -22,8 +22,6 @@ public class Player : MonoBehaviour
     private bool bCanMove = true;
     private Vector3 startPosition;
     private Quaternion startRotation;
-    private AudioManager audioManager;
-    private GameManagerScript gameManager;
 
     private int throwBallTriggerHash;
     private int isRunningBoolHash;
@@ -31,31 +29,35 @@ public class Player : MonoBehaviour
     private int runBackwardsBoolHash;
     private int currentTick;
 
-    void Start()
+    private void Awake()
     {
         m_launcher = GetComponentInChildren<BallLauncher>();
         m_controller = GetComponent<CharacterController>();
         m_anim = gameObject.GetComponentInChildren<Animator>();
-        startPosition = transform.position;
-        startRotation = transform.rotation;
-        audioManager = FindObjectOfType<AudioManager>();
-        gameManager = FindObjectOfType<GameManagerScript>();
-
+        
         throwBallTriggerHash = Animator.StringToHash( "ThrowBall" );
         isRunningBoolHash    = Animator.StringToHash( "IsRunning" );
         isStrafingBoolHash   = Animator.StringToHash( "IsStrafing" );
         runBackwardsBoolHash = Animator.StringToHash( "RunBackwards" );
 
+        startPosition = transform.position;
+        startRotation = transform.rotation;
+
         currentTick = 0;
+    }
+
+    void Start()
+    {
+
     }
 
     private void LaunchBall()
     {
-        MovingPowerBar launchPowerBar = gameManager.GetLaunchPowerBar();
+        MovingPowerBar launchPowerBar = GameManager.GM.GetLaunchPowerBar();
 
         m_launcher.LaunchBall( (maxBallSpeed - minBallSpeed) * launchPowerBar.GetPower() + minBallSpeed );
         launchPowerBar.ResetPower();
-        gameManager.GetBallTracker().LoseBall();
+        GameManager.GM.GetBallTracker().LoseBall();
         bCanMove = true;
     }
 
@@ -63,22 +65,22 @@ public class Player : MonoBehaviour
     {
         if ( HasBall() )
         {
-            gameManager.GetLaunchPowerBar().SetMoving( false );
+            GameManager.GM.GetLaunchPowerBar().SetMoving( false );
             m_anim.SetTrigger( throwBallTriggerHash );
             Invoke( "LaunchBall", THROW_DELAY );
-            audioManager.PlayAudioClip("throw ball", transform.position);
-            //audioManager.StopAudioClip("charge");
+            AudioManager.AM.PlayAudioClip("throw ball", transform.position);
+            //AudioManager.AM.StopAudioClip("charge");
         }
         else
         {
             bCanMove = true;
-            Destroy( gameManager.GetActiveBallObj() );
+            Destroy( GameManager.GM.GetActiveBallObj() );
         }
     }
 
     private bool HasBall()
     {
-        return gameManager.GetActiveBallObj() == null && !gameManager.GetBallTracker().IsEmpty();
+        return GameManager.GM.GetActiveBallObj() == null && !GameManager.GM.GetBallTracker().IsEmpty();
     }
 
     public void ResetToStart()
@@ -96,8 +98,8 @@ public class Player : MonoBehaviour
             if ( HasBall() )
             {
                 bCanMove = false;
-                gameManager.GetLaunchPowerBar().SetMoving( true );
-                //audioManager.PlayAudioClip("charge", transform.position);
+                GameManager.GM.GetLaunchPowerBar().SetMoving( true );
+                //AudioManager.AM.PlayAudioClip("charge", transform.position);
                 //Debug.Log(transform.position.x + ", " + transform.position.y + ", " + transform.position.z);
             }
         }
@@ -136,7 +138,7 @@ public class Player : MonoBehaviour
             if ( walkInput != 0 &&  ( ( ++currentTick ) % SOUND_DELAY == 0) )
             {
                 Vector3 offset = new Vector3(10.0f, 10.0f, 10.0f);
-                audioManager.PlayAudioClip("footstep", transform.position + offset);
+                AudioManager.AM.PlayAudioClip("footstep", transform.position + offset);
             }
 
             m_controller.Move( moveDirection * Time.deltaTime );
