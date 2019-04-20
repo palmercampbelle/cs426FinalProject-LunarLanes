@@ -17,13 +17,19 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private float sensitivityY = 1.0f;
     [SerializeField] private bool invertedY = false;
 
-    private void Start()
+
+    private void Awake()
     {
         camTransform = transform;
         if ( invertedY )
         {
             sensitivityY = -sensitivityY;
         }
+    }
+
+    private void Start()
+    {
+        GameManager.Game.RegisterPausableScript( this );
     }
 
     private void Update()

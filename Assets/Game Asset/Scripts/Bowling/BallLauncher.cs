@@ -35,7 +35,7 @@ public class BallLauncher : MonoBehaviour
 
         ball = newBall;
 
-        GameManager.GM.SetActiveBall( ball.GetComponent<BowlingBall>() );
+        GameManager.Game.SetActiveBall( ball.GetComponent<BowlingBall>() );
     }
 
     public static void ProjectBall( GameObject ball, float launchPower )

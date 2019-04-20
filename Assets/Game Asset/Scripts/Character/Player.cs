@@ -11,9 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform camTransform;
     [SerializeField] private float maxBallSpeed;
     [SerializeField] private float minBallSpeed;
-    [SerializeField] private float moveSpeed = 600.0f;
-    [SerializeField] private float turnSpeed = 400.0f;
-    [SerializeField] private float aimSpeed = 200.0f;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float turnSpeed;
+    [SerializeField] private float aimSpeed;
     [SerializeField] private float gravity = 20.0f;
     [SerializeField] private float THROW_DELAY = 0.5f;
     [SerializeField] private int SOUND_DELAY = 2;
@@ -48,16 +48,16 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-
+        GameManager.Game.RegisterPausableScript( this );
     }
 
     private void LaunchBall()
     {
-        MovingPowerBar launchPowerBar = GameManager.GM.GetLaunchPowerBar();
+        MovingPowerBar launchPowerBar = GameManager.Game.HUD.mLaunchPowerBar;
 
         m_launcher.LaunchBall( (maxBallSpeed - minBallSpeed) * launchPowerBar.GetPower() + minBallSpeed );
         launchPowerBar.ResetPower();
-        GameManager.GM.GetBallTracker().LoseBall();
+        GameManager.Game.HUD.mBallTracker.LoseBall();
         bCanMove = true;
     }
 
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     {
         if ( HasBall() )
         {
-            GameManager.GM.GetLaunchPowerBar().SetMoving( false );
+            GameManager.Game.HUD.mLaunchPowerBar.SetMoving( false );
             m_anim.SetTrigger( throwBallTriggerHash );
             Invoke( "LaunchBall", THROW_DELAY );
             AudioManager.AM.PlayAudioClip("throw ball", transform.position);
@@ -74,13 +74,13 @@ public class Player : MonoBehaviour
         else
         {
             bCanMove = true;
-            Destroy( GameManager.GM.GetActiveBallObj() );
+            Destroy( GameManager.Game.GetActiveBallObj() );
         }
     }
 
     private bool HasBall()
     {
-        return GameManager.GM.GetActiveBallObj() == null && !GameManager.GM.GetBallTracker().IsEmpty();
+        return GameManager.Game.GetActiveBallObj() == null && !GameManager.Game.HUD.mBallTracker.IsEmpty();
     }
 
     public void ResetToStart()
@@ -92,20 +92,38 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if ( !GameManager.Game.InputDisabled )
+        {
+            UpdatePlayerInput();
+        }
+        else
+        {
+            m_anim.SetBool( runBackwardsBoolHash, false );
+            m_anim.SetBool( isRunningBoolHash, false );
+            m_anim.SetBool( isStrafingBoolHash, false );
+        }
+
+
+        // fall
+        moveDirection.y -= gravity * Time.deltaTime;
+    }
+
+    void UpdatePlayerInput()
+    {
         // adjust power of throw by holding down button
-        if ( Input.GetButton( "Throw" ) )
+        if ( Input.GetKey( GameManager.Controls.throwBall ) )
         {
             if ( HasBall() )
             {
                 bCanMove = false;
-                GameManager.GM.GetLaunchPowerBar().SetMoving( true );
+                GameManager.Game.HUD.mLaunchPowerBar.SetMoving( true );
                 //AudioManager.AM.PlayAudioClip("charge", transform.position);
                 //Debug.Log(transform.position.x + ", " + transform.position.y + ", " + transform.position.z);
             }
         }
 
         // throw ball
-        if ( Input.GetButtonUp( "Throw" ) )
+        if ( Input.GetKeyUp( GameManager.Controls.throwBall ) )
         {
             ThrowBall();
         }
@@ -113,18 +131,52 @@ public class Player : MonoBehaviour
         m_launcher.SetHidden( !HasBall() );
 
         // turn
-        float turn = Input.GetAxis( "Turn" );
+        int turn = 0;
+        if ( Input.GetKey( GameManager.Controls.turnLeft ) )
+        {
+            turn = -1;
+        }
+        else if ( Input.GetKey( GameManager.Controls.turnRight ) )
+        {
+            turn = 1;
+        }
         transform.Rotate( 0, turn * turnSpeed * Time.deltaTime, 0 );
 
         // vertical aim
-        float aim = Input.GetAxis("Vertical Aim");
+        int aim = 0;
+        if ( Input.GetKey( GameManager.Controls.aimUp ) )
+        {
+            aim = -1;
+        }
+        else if ( Input.GetKey( GameManager.Controls.aimDown ) )
+        {
+            aim = 1;
+        }
         m_launcher.AdjustAim( aim * aimSpeed * Time.deltaTime );
 
         // walk and strafe
         if ( bCanMove )
         {
-            float walkInput = Input.GetAxis( "Walk" );
+            float walkInput = 0;
+            if ( Input.GetKey( GameManager.Controls.forward ) )
+            {
+                walkInput = 1;
+            }
+            else if ( Input.GetKey( GameManager.Controls.backward ) )
+            {
+                walkInput = -1;
+            }
+
             float strafeInput = Input.GetAxis( "Strafe" );
+            if ( Input.GetKey( GameManager.Controls.strafeLeft ) )
+            {
+                strafeInput = -1;
+            }
+            else if ( Input.GetKey( GameManager.Controls.strafeRight ) )
+            {
+                strafeInput = 1;
+            }
+
             m_anim.SetBool( runBackwardsBoolHash, walkInput < 0 );
             m_anim.SetBool( isRunningBoolHash, walkInput != 0 );
             m_anim.SetBool( isStrafingBoolHash, strafeInput != 0 );
@@ -135,10 +187,10 @@ public class Player : MonoBehaviour
                 moveDirection += transform.right * strafeInput * moveSpeed;
             }
 
-            if ( walkInput != 0 &&  ( ( ++currentTick ) % SOUND_DELAY == 0) )
+            if ( walkInput != 0 && ((++currentTick) % SOUND_DELAY == 0) )
             {
                 Vector3 offset = new Vector3(10.0f, 10.0f, 10.0f);
-                AudioManager.AM.PlayAudioClip("footstep", transform.position + offset);
+                AudioManager.AM.PlayAudioClip( "footstep", transform.position + offset );
             }
 
             m_controller.Move( moveDirection * Time.deltaTime );
@@ -149,8 +201,5 @@ public class Player : MonoBehaviour
             m_anim.SetBool( isRunningBoolHash, false );
             m_anim.SetBool( isStrafingBoolHash, false );
         }
-
-        // fall
-        moveDirection.y -= gravity * Time.deltaTime;
     }
 }

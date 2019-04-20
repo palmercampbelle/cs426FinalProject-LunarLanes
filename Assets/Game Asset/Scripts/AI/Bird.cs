@@ -66,6 +66,8 @@ public class Bird : MonoBehaviour
         //
         //anim.SetBool( flyingBoolHash, true );
         ////anim.SetInteger(hopIntHash, -2);
+
+        GameManager.Game.RegisterPausableScript( this );
     }
 
     void Update()

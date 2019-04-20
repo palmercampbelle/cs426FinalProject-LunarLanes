@@ -34,7 +34,7 @@ public class Pin : MonoBehaviour
 
     private void FallDownChores()
     {
-        Scorekeeper scorekeeper = GameManager.GM.GetScorekeeper();
+        ScoreManager scorekeeper = GameManager.Game.HUD.mScoreManager;
 
         scorekeeper.AddPoints( 1 );
 
