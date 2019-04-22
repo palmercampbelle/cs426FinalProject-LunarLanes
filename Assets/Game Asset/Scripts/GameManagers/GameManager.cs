@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CanvasGroup m_TitleScreen;
     [SerializeField] private HUDManager m_HUD;
     [SerializeField] private GameObject m_GameOverPanel;
+    [SerializeField] private Credits m_CreditsScreen;
 
     private List<MonoBehaviour> m_PausableScripts;
     private bool bIsPaused = false;
@@ -252,5 +253,10 @@ public class GameManager : MonoBehaviour
         default:
             break;
         }
+    }
+
+    public void StartCredits()
+    {
+        m_CreditsScreen.StartCredits();
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - deathHazard
   - orbit
   - obstacle
+  - creditScreen
   layers:
   - Default
   - TransparentFX

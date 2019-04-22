@@ -59,10 +59,13 @@ public class ScoreManager : MonoBehaviour
 
     public bool IsRoundOver()
     {
-        BallTracker ballTracker = GameManager.Game.HUD.mBallTracker;
-        if ( ballTracker.IsEmpty() && GameManager.GetBalls().Length == 0 )
-        {
-            return true;
+        if( GameManager.Game && GameManager.Game.HUD && GameManager.Game.HUD.mBallTracker )
+        { 
+            BallTracker ballTracker = GameManager.Game.HUD.mBallTracker;
+            if ( ballTracker.IsEmpty() && GameManager.GetBalls().Length == 0 )
+            {
+                return true;
+            }
         }
 
         return false;
