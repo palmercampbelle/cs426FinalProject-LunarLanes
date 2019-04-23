@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
         public KeyCode strafeLeft, strafeRight;
         public KeyCode turnLeft, turnRight;
         public KeyCode aimUp, aimDown;
-        public KeyCode throwBall;
+        public KeyCode throwBall, returnBall;
     }
 
     public static GameManager Game;
@@ -62,16 +62,17 @@ public class GameManager : MonoBehaviour
             Destroy( gameObject );
         }
 
-        // load player control preferences
+        // load player control preferences ( or default controls )
         Controls.forward     = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_FORWARD     , KeyCode.W.ToString() ) );
         Controls.backward    = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_BACKWARD    , KeyCode.S.ToString() ) );
-        Controls.strafeLeft  = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_STRAFE_LEFT , KeyCode.LeftArrow.ToString() ) );
-        Controls.strafeRight = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_STRAFE_RIGHT, KeyCode.RightArrow.ToString() ) );
-        Controls.turnLeft    = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_TURN_LEFT   , KeyCode.A.ToString() ) );
-        Controls.turnRight   = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_TURN_RIGHT  , KeyCode.D.ToString() ) );
+        Controls.strafeLeft  = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_STRAFE_LEFT , KeyCode.A.ToString() ) );
+        Controls.strafeRight = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_STRAFE_RIGHT, KeyCode.D.ToString() ) );
+        Controls.turnLeft    = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_TURN_LEFT   , KeyCode.LeftArrow.ToString() ) );
+        Controls.turnRight   = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_TURN_RIGHT  , KeyCode.RightArrow.ToString() ) );
         Controls.aimUp       = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_AIM_UP      , KeyCode.UpArrow.ToString() ) );
         Controls.aimDown     = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_AIM_DOWN    , KeyCode.DownArrow.ToString() ) );
         Controls.throwBall   = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_THROW_BALL  , KeyCode.Space.ToString() ) );
+        Controls.returnBall  = (KeyCode)System.Enum.Parse( typeof( KeyCode ), PlayerPrefs.GetString( ControlsMenu.PLAYER_PREF_RETURN_BALL , KeyCode.R.ToString() ) );
 
         m_PausableScripts = new List<MonoBehaviour>();
     }

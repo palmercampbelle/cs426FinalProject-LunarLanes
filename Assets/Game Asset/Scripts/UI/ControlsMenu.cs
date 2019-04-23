@@ -14,6 +14,7 @@ public class ControlsMenu : MonoBehaviour
     [SerializeField] private MenuButton aimUpButton;
     [SerializeField] private MenuButton aimDownButton;
     [SerializeField] private MenuButton throwBallButton;
+    [SerializeField] private MenuButton returnBallButton;
 
     public const string PLAYER_PREF_FORWARD      = "Forward";     
     public const string PLAYER_PREF_BACKWARD     = "Backward";    
@@ -24,6 +25,7 @@ public class ControlsMenu : MonoBehaviour
     public const string PLAYER_PREF_AIM_UP       = "Aim Up";    
     public const string PLAYER_PREF_AIM_DOWN     = "Aim Down";  
     public const string PLAYER_PREF_THROW_BALL   = "Throw Ball";
+    public const string PLAYER_PREF_RETURN_BALL  = "Return Ball";
 
     List<MenuButton> allControlsButtons;
     Event keyEvent;
@@ -34,7 +36,6 @@ public class ControlsMenu : MonoBehaviour
 
     private void Awake()
     {
-
         forwardButton.LabelText     = PLAYER_PREF_FORWARD;
         backwardButton.LabelText    = PLAYER_PREF_BACKWARD;
         strafeLeftButton.LabelText  = PLAYER_PREF_STRAFE_LEFT;
@@ -44,6 +45,7 @@ public class ControlsMenu : MonoBehaviour
         aimUpButton.LabelText       = PLAYER_PREF_AIM_UP;
         aimDownButton.LabelText     = PLAYER_PREF_AIM_DOWN;
         throwBallButton.LabelText   = PLAYER_PREF_THROW_BALL;
+        returnBallButton.LabelText  = PLAYER_PREF_RETURN_BALL;
 
         allControlsButtons = new List<MenuButton>();
         allControlsButtons.Add( forwardButton );
@@ -55,6 +57,7 @@ public class ControlsMenu : MonoBehaviour
         allControlsButtons.Add( aimUpButton );
         allControlsButtons.Add( aimDownButton );
         allControlsButtons.Add( throwBallButton );
+        allControlsButtons.Add( returnBallButton );
 
         // setup the onClick Listeners
         foreach ( MenuButton menuButton in allControlsButtons )
@@ -76,6 +79,7 @@ public class ControlsMenu : MonoBehaviour
         aimUpButton.ButtonText       = GameManager.Controls.aimUp.ToString();
         aimDownButton.ButtonText     = GameManager.Controls.aimDown.ToString();
         throwBallButton.ButtonText   = GameManager.Controls.throwBall.ToString();
+        returnBallButton.ButtonText  = GameManager.Controls.returnBall.ToString();
     }
 
     void Update()
@@ -157,51 +161,41 @@ public class ControlsMenu : MonoBehaviour
         switch ( keyName )
         {
         case PLAYER_PREF_FORWARD:
-            GameManager.Controls.forward = newKey; //Set forward to new keycode
-            buttonText.text = newKey.ToString(); //Set button text to new key
-            PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
+            GameManager.Controls.forward = newKey;
             break;
         case PLAYER_PREF_BACKWARD:
-            GameManager.Controls.backward = newKey; //Set forward to new keycode
-            buttonText.text = newKey.ToString(); //Set button text to new key
-            PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
+            GameManager.Controls.backward = newKey; 
             break;
         case PLAYER_PREF_STRAFE_LEFT:
-            GameManager.Controls.strafeLeft = newKey; //Set forward to new keycode
-            buttonText.text = newKey.ToString(); //Set button text to new key
-            PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
+            GameManager.Controls.strafeLeft = newKey; 
             break;
         case PLAYER_PREF_STRAFE_RIGHT:
-            GameManager.Controls.strafeRight = newKey; //Set forward to new keycode
-            buttonText.text = newKey.ToString(); //Set button text to new key
-            PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
+            GameManager.Controls.strafeRight = newKey; 
             break;
         case PLAYER_PREF_TURN_LEFT:
-            GameManager.Controls.turnLeft = newKey; //Set forward to new keycode
-            buttonText.text = newKey.ToString(); //Set button text to new key
-            PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
+            GameManager.Controls.turnLeft = newKey; 
             break;
         case PLAYER_PREF_TURN_RIGHT:
-            GameManager.Controls.turnRight = newKey; //Set forward to new keycode
-            buttonText.text = newKey.ToString(); //Set button text to new key
-            PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
+            GameManager.Controls.turnRight = newKey; 
             break;
         case PLAYER_PREF_AIM_UP:
-            GameManager.Controls.aimUp = newKey; //Set forward to new keycode
-            buttonText.text = newKey.ToString(); //Set button text to new key
-            PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
+            GameManager.Controls.aimUp = newKey; 
             break;
         case PLAYER_PREF_AIM_DOWN:
-            GameManager.Controls.aimDown = newKey; //Set forward to new keycode
-            buttonText.text = newKey.ToString(); //Set button text to new key
-            PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
+            GameManager.Controls.aimDown = newKey; 
             break;
         case PLAYER_PREF_THROW_BALL:
-            GameManager.Controls.throwBall = newKey; //Set forward to new keycode
-            buttonText.text = newKey.ToString(); //Set button text to new key
-            PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
+            GameManager.Controls.throwBall = newKey; 
             break;
+        case PLAYER_PREF_RETURN_BALL:
+            GameManager.Controls.returnBall = newKey; 
+            break;
+        default:
+            yield break;
         }
+
+        buttonText.text = newKey.ToString(); //Set button text to new key
+        PlayerPrefs.SetString( keyName, newKey.ToString() ); //save new key to PlayerPrefs
 
         yield return null;
     }

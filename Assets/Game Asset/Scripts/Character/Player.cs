@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     private Vector3 startPosition;
     private Quaternion startRotation;
 
+    private bool bThrowDisabled = false;
+    [SerializeField] private float THROW_COOLDOWN = 2.0f;
+
     private int throwBallTriggerHash;
     private int isRunningBoolHash;
     private int isStrafingBoolHash;
@@ -51,31 +54,40 @@ public class Player : MonoBehaviour
         GameManager.Game.RegisterPausableScript( this );
     }
 
-    private void LaunchBall()
+    private IEnumerator LaunchBall()
     {
-        MovingPowerBar launchPowerBar = GameManager.Game.HUD.mLaunchPowerBar;
+        bThrowDisabled = true;
+        bCanMove = false;
+        yield return new WaitForSeconds( THROW_DELAY );
 
+        MovingPowerBar launchPowerBar = GameManager.Game.HUD.mLaunchPowerBar;
         m_launcher.LaunchBall( (maxBallSpeed - minBallSpeed) * launchPowerBar.GetPower() + minBallSpeed );
         launchPowerBar.ResetPower();
         GameManager.Game.HUD.mBallTracker.LoseBall();
         bCanMove = true;
+
+        yield return new WaitForSeconds( THROW_COOLDOWN );
+        bThrowDisabled = false;
     }
 
     private void ThrowBall()
     {
-        if ( HasBall() )
-        {
-            GameManager.Game.HUD.mLaunchPowerBar.SetMoving( false );
-            m_anim.SetTrigger( throwBallTriggerHash );
-            Invoke( "LaunchBall", THROW_DELAY );
-            AudioManager.AM.PlayAudioClip("throw ball", transform.position);
-            //AudioManager.AM.StopAudioClip("charge");
-        }
-        else
-        {
-            bCanMove = true;
-            Destroy( GameManager.Game.GetActiveBallObj() );
-        }
+        if ( bThrowDisabled )
+            return;
+
+        GameManager.Game.HUD.mLaunchPowerBar.SetMoving( false );
+
+        m_anim.SetTrigger( throwBallTriggerHash );
+
+        AudioManager.AM.PlayAudioClip("throw ball", transform.position);
+        //AudioManager.AM.StopAudioClip("charge");
+
+        StartCoroutine( LaunchBall() );
+    }
+
+    private void ReturnBall()
+    {
+        Destroy( GameManager.Game.GetActiveBallObj() );
     }
 
     private bool HasBall()
@@ -103,7 +115,6 @@ public class Player : MonoBehaviour
             m_anim.SetBool( isStrafingBoolHash, false );
         }
 
-
         // fall
         moveDirection.y -= gravity * Time.deltaTime;
     }
@@ -113,19 +124,34 @@ public class Player : MonoBehaviour
         // adjust power of throw by holding down button
         if ( Input.GetKey( GameManager.Controls.throwBall ) )
         {
-            if ( HasBall() )
+            if ( HasBall() && !bThrowDisabled )
             {
-                bCanMove = false;
                 GameManager.Game.HUD.mLaunchPowerBar.SetMoving( true );
                 //AudioManager.AM.PlayAudioClip("charge", transform.position);
                 //Debug.Log(transform.position.x + ", " + transform.position.y + ", " + transform.position.z);
             }
         }
+        else
+        {
+            GameManager.Game.HUD.mLaunchPowerBar.SetMoving( false );
+        }
 
         // throw ball
         if ( Input.GetKeyUp( GameManager.Controls.throwBall ) )
         {
-            ThrowBall();
+            if ( HasBall() && !bThrowDisabled )
+            {
+                ThrowBall();
+            }
+        }
+
+        // return ball
+        if ( Input.GetKeyDown( GameManager.Controls.returnBall ) )
+        {
+            if ( !HasBall() )
+            {
+                ReturnBall();
+            }
         }
 
         m_launcher.SetHidden( !HasBall() );
@@ -167,7 +193,7 @@ public class Player : MonoBehaviour
                 walkInput = -1;
             }
 
-            float strafeInput = Input.GetAxis( "Strafe" );
+            float strafeInput = 0;
             if ( Input.GetKey( GameManager.Controls.strafeLeft ) )
             {
                 strafeInput = -1;

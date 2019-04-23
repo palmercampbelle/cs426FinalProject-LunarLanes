@@ -30,7 +30,7 @@ public class NewRoundMessage : MonoBehaviour
         StopAllCoroutines();
         m_CanvasGroup.alpha = 0;
         m_RoundNumText.SetText( roundNum.ToString() );
-        StartCoroutine( "ShowMessage" );
+        StartCoroutine( ShowMessage() );
     }
 
     private IEnumerator ShowMessage()
