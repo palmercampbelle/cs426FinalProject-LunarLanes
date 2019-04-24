@@ -30,16 +30,17 @@ public class Credits : MonoBehaviour
         credits += "Marquise Howard\n";
         credits += "\n";
         credits += "[Art]\n";
-        credits += "Living Brirds: DINOPUNCH (Unity Asset Store)\n";
+        credits += "Living Birds: DINOPUNCH (Unity Asset Store)\n";
         credits += "Tank & Healer Studio: Simple Health Bar FREE (Unity Asset Store)\n";
         credits += "Stagit East: Earth and Planets Skyboxes (Unity Asset Store)\n";
         credits += "Bowling ball and pin 3D Model: (https://free3d.com/3d-model/bowling-ball-and-pin-22040.html)\n";
-        credits += "MK Toon Free: (Unity Asset Store)";
+        credits += "MK Toon Free: (Unity Asset Store)\n";
+        credits += "Yughues Free Metal Materials: (Unity Asset Store)\n";
         credits += "\n";
         credits += "[Sound]\n";
         credits += "Footstep On Wood: SoundsAreGr8 (freesound.org)\n";
         credits += "Bounce: josepharaoh99 (freesound.org)\n";
-        credits += "boune percussion thing: waveplay_old (freesound.org)\n";
+        credits += "Bounce percussion thing: waveplay_old (freesound.org)\n";
         credits += "Attack Punch: elynch0901 (freesound.org)\n";
         credits += "charging power: JavierZumer (freesound.org) \n";
 
@@ -70,7 +71,7 @@ public class Credits : MonoBehaviour
             offset *= m_speed;
             m_creditsText.rectTransform.position += offset;
 
-            if( m_creditsText.rectTransform.position.y > m_topTreshold )
+            if( m_creditsText.rectTransform.position.y > m_topTreshold || Input.GetKeyDown( KeyCode.Escape ) )
             {
                 StopCredits();
             }
