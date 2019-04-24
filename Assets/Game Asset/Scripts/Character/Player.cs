@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float aimSpeed;
     [SerializeField] private float gravity = 20.0f;
     [SerializeField] private float THROW_DELAY = 0.5f;
-    [SerializeField] private int SOUND_DELAY = 2;
+    [SerializeField] private int SOUND_DELAY = 80;
 
     private Vector3 moveDirection = Vector3.zero;
     private bool bCanMove = true;

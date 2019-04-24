@@ -34,6 +34,7 @@ public class Credits : MonoBehaviour
         credits += "Tank & Healer Studio: Simple Health Bar FREE (Unity Asset Store)\n";
         credits += "Stagit East: Earth and Planets Skyboxes (Unity Asset Store)\n";
         credits += "Bowling ball and pin 3D Model: (https://free3d.com/3d-model/bowling-ball-and-pin-22040.html)\n";
+        credits += "MK Toon Free: (Unity Asset Store)";
         credits += "\n";
         credits += "[Sound]\n";
         credits += "Footstep On Wood: SoundsAreGr8 (freesound.org)\n";
@@ -63,11 +64,6 @@ public class Credits : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //m_creditsText.transform.Translate(Vector3.up * Time.deltaTime * m_speed);
-        //if (m_creditsText.transform.position.y > m_topTreshold)
-        //{
-        //    StopCredits();
-        //}
         if (mb_IsMoving)
         {
             Vector3 offset = new Vector3(0.0f, 1.0f, 0.0f);
