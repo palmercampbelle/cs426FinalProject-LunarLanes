@@ -234,7 +234,11 @@ public class GameManager : MonoBehaviour
 
     public void HideGameOverMenu()
     {
-        m_GameOverPanel.SetActive( false );
+        if ( m_GameOverPanel.activeInHierarchy )
+        {
+            m_GameOverPanel.SetActive( false );
+            SetPaused( false );
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////
